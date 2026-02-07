@@ -370,7 +370,7 @@
         // 當飲料選項改變時，自動提取價格
         document.getElementById('drink').addEventListener('change', function() {
             const selectedOption = this.options[this.selectedIndex];
-            const drinkText = selectedOption.value;
+            const drinkText = selectedOption.text;
             
             // 從選項文字中提取價格（例如：茉莉綠茶 (M) - $30）
             const priceMatch = drinkText.match(/\$(\d+)/);
