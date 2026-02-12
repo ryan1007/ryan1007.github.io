@@ -88,6 +88,167 @@
         background-color: white;
       }
 
+      .drink-button {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #0066cc;
+        border-radius: 8px;
+        font-size: 15px;
+        background-color: white;
+        color: #333;
+        cursor: pointer;
+        font-family: "Microsoft JhengHei", Arial, sans-serif;
+        font-weight: 500;
+        transition: all 0.3s;
+        text-align: left;
+      }
+
+      .drink-button:hover {
+        background-color: #f0f0f0;
+        border-color: #0066cc;
+      }
+
+      /* 模態框 */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        overflow: auto;
+      }
+
+      .modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        background-color: white;
+        border-radius: 15px;
+        max-height: 85vh;
+        width: 90%;
+        max-width: 600px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
+        animation: slideIn 0.3s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .modal-header {
+        background: #0066cc;
+        color: white;
+        padding: 20px;
+        border-radius: 15px 15px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .modal-header h2 {
+        font-size: 20px;
+        margin: 0;
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .close-btn:hover {
+        opacity: 0.8;
+      }
+
+      .modal-body {
+        padding: 20px;
+      }
+
+      .drink-category {
+        margin-bottom: 20px;
+      }
+
+      .category-title {
+        font-weight: bold;
+        color: #0066cc;
+        margin-bottom: 10px;
+        font-size: 16px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #e0e0e0;
+      }
+
+      .drink-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .drink-item {
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+        background-color: white;
+        text-align: center;
+        font-size: 14px;
+      }
+
+      .drink-item:hover {
+        border-color: #0066cc;
+        background-color: #f0f7ff;
+        transform: translateY(-2px);
+      }
+
+      .drink-item.selected {
+        background-color: #0066cc;
+        color: white;
+        border-color: #0066cc;
+      }
+
+      .drink-name {
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+
+      .drink-price {
+        font-size: 13px;
+        opacity: 0.8;
+      }
+
+      @media (max-width: 600px) {
+        .modal-content {
+          width: 95%;
+          max-height: 90vh;
+        }
+
+        .drink-list {
+          grid-template-columns: 1fr;
+        }
+      }
+
       .radio-group {
         display: flex;
         flex-wrap: wrap;
@@ -201,169 +362,27 @@
           </div>
 
           <div class="form-group">
-            <label for="drink">飲料品項 <span class="required">*</span></label>
-            <select id="drink" name="drink" required>
-              <option value="">請選擇飲料</option>
-              <optgroup label="找好茶 FLAVORED TEA">
-                <option value="茉莉綠茶 (M)">茉莉綠茶 (M) - $30</option>
-                <option value="茉莉綠茶 (L)">茉莉綠茶 (L) - $35</option>
-                <option value="阿薩姆紅茶 (M)">阿薩姆紅茶 (M) - $30</option>
-                <option value="阿薩姆紅茶 (L)">阿薩姆紅茶 (L) - $35</option>
-                <option value="四季春青茶 (M)">四季春青茶 (M) - $30</option>
-                <option value="四季春青茶 (L)">四季春青茶 (L) - $35</option>
-                <option value="黃金烏龍 (M)">黃金烏龍 (M) - $30</option>
-                <option value="黃金烏龍 (L)">黃金烏龍 (L) - $35</option>
-                <option value="椰果紅茶 (M)">椰果紅茶 (M) - $35</option>
-                <option value="椰果紅茶 (L)">椰果紅茶 (L) - $45</option>
-                <option value="椰果綠茶 (M)">椰果綠茶 (M) - $35</option>
-                <option value="椰果綠茶 (L)">椰果綠茶 (L) - $45</option>
-                <option value="波霸紅茶 (M)">波霸紅茶 (M) - $35</option>
-                <option value="波霸紅茶 (L)">波霸紅茶 (L) - $45</option>
-                <option value="波霸綠茶 (M)">波霸綠茶 (M) - $35</option>
-                <option value="波霸綠茶 (L)">波霸綠茶 (L) - $45</option>
-                <option value="燕麥紅茶 (M)">燕麥紅茶 (M) - $35</option>
-                <option value="燕麥紅茶 (L)">燕麥紅茶 (L) - $45</option>
-                <option value="燕麥綠茶 (M)">燕麥綠茶 (M) - $35</option>
-                <option value="燕麥綠茶 (L)">燕麥綠茶 (L) - $45</option>
-                <option value="燕麥四季春 (M)">燕麥四季春 (M) - $35</option>
-                <option value="燕麥四季春 (L)">燕麥四季春 (L) - $45</option>
-                <option value="微檸檬紅茶 (M)">微檸檬紅茶 (M) - $35</option>
-                <option value="微檸檬紅茶 (L)">微檸檬紅茶 (L) - $45</option>
-                <option value="微檸檬青茶 (M)">微檸檬青茶 (M) - $35</option>
-                <option value="微檸檬青茶 (L)">微檸檬青茶 (L) - $45</option>
-                <option value="檸檬綠茶 (M)">檸檬綠茶 (M) - $40</option>
-                <option value="檸檬綠茶 (L)">檸檬綠茶 (L) - $55</option>
-                <option value="檸檬四季春 (M)">檸檬四季春 (M) - $40</option>
-                <option value="檸檬四季春 (L)">檸檬四季春 (L) - $55</option>
-                <option value="梅の綠 (M)">梅の綠 (M) - $40</option>
-                <option value="梅の綠 (L)">梅の綠 (L) - $55</option>
-                <option value="8冰綠茶 (M)">8冰綠茶 (M) - $40</option>
-                <option value="8冰綠茶 (L)">8冰綠茶 (L) - $55</option>
-                <option value="情人茶 (M)">情人茶 (M) - $40</option>
-                <option value="情人茶 (L)">情人茶 (L) - $55</option>
-                <option value="柚子紅茶 (M)">柚子紅茶 (M) - $40</option>
-                <option value="柚子紅茶 (L)">柚子紅茶 (L) - $55</option>
-                <option value="柚子綠茶 (M)">柚子綠茶 (M) - $40</option>
-                <option value="柚子綠茶 (L)">柚子綠茶 (L) - $55</option>
-                <option value="柚子青茶 (M)">柚子青茶 (M) - $40</option>
-                <option value="柚子青茶 (L)">柚子青茶 (L) - $55</option>
-                <option value="柚子烏龍 (M)">柚子烏龍 (M) - $40</option>
-                <option value="柚子烏龍 (L)">柚子烏龍 (L) - $55</option>
-                <option value="旺來紅茶 (M)">旺來紅茶 (M) - $40</option>
-                <option value="旺來紅茶 (L)">旺來紅茶 (L) - $55</option>
-                <option value="旺來青茶 (M)">旺來青茶 (M) - $40</option>
-                <option value="旺來青茶 (L)">旺來青茶 (L) - $55</option>
-                <option value="冰淇淋紅茶 (M)">冰淇淋紅茶 (M) - $40</option>
-                <option value="冰淇淋紅茶 (L)">冰淇淋紅茶 (L) - $55</option>
-                <option value="多多綠茶 (M)">多多綠茶 (M) - $40</option>
-                <option value="多多綠茶 (L)">多多綠茶 (L) - $55</option>
-                <option value="多多紅茶 (M)">多多紅茶 (M) - $40</option>
-                <option value="多多紅茶 (L)">多多紅茶 (L) - $55</option>
-                <option value="多多檸檬綠 (M)">多多檸檬綠 (M) - $50</option>
-                <option value="多多檸檬綠 (L)">多多檸檬綠 (L) - $65</option>
-              </optgroup>
-              <optgroup label="找奶茶 MILK TEA">
-                <option value="奶茶 (M)">奶茶 (M) - $40</option>
-                <option value="奶茶 (L)">奶茶 (L) - $55</option>
-                <option value="奶綠 (M)">奶綠 (M) - $40</option>
-                <option value="奶綠 (L)">奶綠 (L) - $55</option>
-                <option value="烏龍奶 (M)">烏龍奶 (M) - $40</option>
-                <option value="烏龍奶 (L)">烏龍奶 (L) - $55</option>
-                <option value="椰果奶茶 (M)">椰果奶茶 (M) - $40</option>
-                <option value="椰果奶茶 (L)">椰果奶茶 (L) - $55</option>
-                <option value="珍珠奶茶 (M)">珍珠奶茶 (M) - $40</option>
-                <option value="珍珠奶茶 (L)">珍珠奶茶 (L) - $55</option>
-                <option value="波霸奶茶 (M)">波霸奶茶 (M) - $40</option>
-                <option value="波霸奶茶 (L)">波霸奶茶 (L) - $55</option>
-                <option value="燕麥奶茶 (M)">燕麥奶茶 (M) - $40</option>
-                <option value="燕麥奶茶 (L)">燕麥奶茶 (L) - $55</option>
-                <option value="燕麥奶青 (M)">燕麥奶青 (M) - $40</option>
-                <option value="燕麥奶青 (L)">燕麥奶青 (L) - $55</option>
-                <option value="燕麥烏龍奶 (M)">燕麥烏龍奶 (M) - $40</option>
-                <option value="燕麥烏龍奶 (L)">燕麥烏龍奶 (L) - $55</option>
-                <option value="布丁奶茶 (M)">布丁奶茶 (M) - $50</option>
-                <option value="布丁奶茶 (L)">布丁奶茶 (L) - $65</option>
-                <option value="冰淇淋奶茶 (M)">冰淇淋奶茶 (M) - $50</option>
-                <option value="冰淇淋奶茶 (L)">冰淇淋奶茶 (L) - $65</option>
-                <option value="紅茶瑪奇朵 (M)">紅茶瑪奇朵 (M) - $40</option>
-                <option value="紅茶瑪奇朵 (L)">紅茶瑪奇朵 (L) - $55</option>
-                <option value="青茶瑪奇朵 (M)">青茶瑪奇朵 (M) - $40</option>
-                <option value="青茶瑪奇朵 (L)">青茶瑪奇朵 (L) - $55</option>
-                <option value="阿華田 (M)">阿華田 (M) - $45</option>
-                <option value="阿華田 (L)">阿華田 (L) - $60</option>
-                <option value="燕麥阿華田 (M)">燕麥阿華田 (M) - $45</option>
-                <option value="燕麥阿華田 (L)">燕麥阿華田 (L) - $60</option>
-                <option value="可可芭蕾 (M)">可可芭蕾 (M) - $50</option>
-                <option value="可可芭蕾 (L)">可可芭蕾 (L) - $65</option>
-              </optgroup>
-              <optgroup label="找拿鐵 TEA LATTE">
-                <option value="紅茶拿鐵 (M)">紅茶拿鐵 (M) - $50</option>
-                <option value="紅茶拿鐵 (L)">紅茶拿鐵 (L) - $65</option>
-                <option value="綠茶拿鐵 (M)">綠茶拿鐵 (M) - $50</option>
-                <option value="綠茶拿鐵 (L)">綠茶拿鐵 (L) - $65</option>
-                <option value="烏龍拿鐵 (M)">烏龍拿鐵 (M) - $50</option>
-                <option value="烏龍拿鐵 (L)">烏龍拿鐵 (L) - $65</option>
-                <option value="珍珠紅茶拿鐵 (M)">珍珠紅茶拿鐵 (M) - $50</option>
-                <option value="珍珠紅茶拿鐵 (L)">珍珠紅茶拿鐵 (L) - $65</option>
-                <option value="波霸紅茶拿鐵 (M)">波霸紅茶拿鐵 (M) - $50</option>
-                <option value="波霸紅茶拿鐵 (L)">波霸紅茶拿鐵 (L) - $65</option>
-                <option value="燕麥紅茶拿鐵 (M)">燕麥紅茶拿鐵 (M) - $50</option>
-                <option value="燕麥紅茶拿鐵 (L)">燕麥紅茶拿鐵 (L) - $65</option>
-                <option value="布丁紅茶拿鐵 (M)">布丁紅茶拿鐵 (M) - $55</option>
-                <option value="布丁紅茶拿鐵 (L)">布丁紅茶拿鐵 (L) - $75</option>
-                <option value="冰淇淋紅茶拿鐵 (M)">
-                  冰淇淋紅茶拿鐵 (M) - $55
-                </option>
-                <option value="冰淇淋紅茶拿鐵 (L)">
-                  冰淇淋紅茶拿鐵 (L) - $75
-                </option>
-                <option value="阿華田拿鐵 (M)">阿華田拿鐵 (M) - $55</option>
-                <option value="阿華田拿鐵 (L)">阿華田拿鐵 (L) - $75</option>
-                <option value="燕麥阿華田拿鐵 (M)">
-                  燕麥阿華田拿鐵 (M) - $55
-                </option>
-                <option value="燕麥阿華田拿鐵 (L)">
-                  燕麥阿華田拿鐵 (L) - $75
-                </option>
-                <option value="可可芭蕾拿鐵 (M)">可可芭蕾拿鐵 (M) - $55</option>
-                <option value="可可芭蕾拿鐵 (L)">可可芭蕾拿鐵 (L) - $75</option>
-              </optgroup>
-              <optgroup label="找新鮮 FRESH JUICE">
-                <option value="柚子茶 (M)">柚子茶 (M) - $40</option>
-                <option value="柚子茶 (L)">柚子茶 (L) - $55</option>
-                <option value="8冰茶 (M)">8冰茶 (M) - $40</option>
-                <option value="8冰茶 (L)">8冰茶 (L) - $55</option>
-                <option value="檸檬汁 (M)">檸檬汁 (M) - $50</option>
-                <option value="檸檬汁 (L)">檸檬汁 (L) - $65</option>
-                <option value="金桔檸檬 (M)">金桔檸檬 (M) - $50</option>
-                <option value="金桔檸檬 (L)">金桔檸檬 (L) - $65</option>
-                <option value="檸檬梅汁 (M)">檸檬梅汁 (M) - $50</option>
-                <option value="檸檬梅汁 (L)">檸檬梅汁 (L) - $65</option>
-                <option value="檸檬多多 (M)">檸檬多多 (M) - $55</option>
-                <option value="檸檬多多 (L)">檸檬多多 (L) - $75</option>
-              </optgroup>
-              <optgroup label="❄️ 季節限定 SEASONAL SPECIAL">
-                <option value="蜂蜜紅茶 (M)">蜂蜜紅茶 (M) - $40</option>
-                <option value="蜂蜜紅茶 (L)">蜂蜜紅茶 (L) - $55</option>
-                <option value="蜂蜜綠茶 (M)">蜂蜜綠茶 (M) - $40</option>
-                <option value="蜂蜜綠茶 (L)">蜂蜜綠茶 (L) - $55</option>
-                <option value="蜂蜜奶茶 (M)">蜂蜜奶茶 (M) - $50</option>
-                <option value="蜂蜜奶茶 (L)">蜂蜜奶茶 (L) - $65</option>
-                <option value="鮮柚綠茶 (M)">鮮柚綠茶 (M) - $50</option>
-                <option value="鮮柚綠茶 (L)">鮮柚綠茶 (L) - $65</option>
-                <option value="葡萄柚汁 (M)">葡萄柚汁 (M) - $50</option>
-                <option value="葡萄柚汁 (L)">葡萄柚汁 (L) - $65</option>
-                <option value="葡萄柚蜜 (M)">葡萄柚蜜 (M) - $55</option>
-                <option value="葡萄柚蜜 (L)">葡萄柚蜜 (L) - $75</option>
-                <option value="葡萄柚多多 (M)">葡萄柚多多 (M) - $55</option>
-                <option value="葡萄柚多多 (L)">葡萄柚多多 (L) - $75</option>
-                <option value="檸檬蜜 (M)">檸檬蜜 (M) - $55</option>
-                <option value="檸檬蜜 (L)">檸檬蜜 (L) - $75</option>
-                <option value="金桔檸檬蜜 (M)">金桔檸檬蜜 (M) - $55</option>
-                <option value="金桔檸檬蜜 (L)">金桔檸檬蜜 (L) - $75</option>
-              </optgroup>
-            </select>
+            <label for="drinkBtn"
+              >飲料品項 <span class="required">*</span></label
+            >
+            <button type="button" id="drinkBtn" class="drink-button" required>
+              請選擇飲料 ⬇️
+            </button>
+            <input type="hidden" id="drink" name="drink" value="" />
             <input type="hidden" id="price" name="price" value="" />
+          </div>
+
+          <!-- 飲料選擇模態框 -->
+          <div id="drinkModal" class="modal">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2>選擇飲料</h2>
+                <button type="button" class="close-btn">&times;</button>
+              </div>
+              <div class="modal-body" id="drinkCatalog">
+                <!-- 飲料品項將由 JavaScript 動態生成 -->
+              </div>
+            </div>
           </div>
 
           <div class="form-group">
@@ -440,19 +459,259 @@
     </div>
 
     <script>
-      // 當飲料選項改變時，自動提取價格
-      document.getElementById("drink").addEventListener("change", function () {
-        const selectedOption = this.options[this.selectedIndex];
-        const drinkText = selectedOption.text;
+      // 飲料數據
+      const drinks = {
+        "找好茶 FLAVORED TEA": [
+          { name: "茉莉綠茶 (M)", price: 30 },
+          { name: "茉莉綠茶 (L)", price: 35 },
+          { name: "阿薩姆紅茶 (M)", price: 30 },
+          { name: "阿薩姆紅茶 (L)", price: 35 },
+          { name: "四季春青茶 (M)", price: 30 },
+          { name: "四季春青茶 (L)", price: 35 },
+          { name: "黃金烏龍 (M)", price: 30 },
+          { name: "黃金烏龍 (L)", price: 35 },
+          { name: "椰果紅茶 (M)", price: 35 },
+          { name: "椰果紅茶 (L)", price: 45 },
+          { name: "椰果綠茶 (M)", price: 35 },
+          { name: "椰果綠茶 (L)", price: 45 },
+          { name: "波霸紅茶 (M)", price: 35 },
+          { name: "波霸紅茶 (L)", price: 45 },
+          { name: "波霸綠茶 (M)", price: 35 },
+          { name: "波霸綠茶 (L)", price: 45 },
+          { name: "燕麥紅茶 (M)", price: 35 },
+          { name: "燕麥紅茶 (L)", price: 45 },
+          { name: "燕麥綠茶 (M)", price: 35 },
+          { name: "燕麥綠茶 (L)", price: 45 },
+          { name: "燕麥四季春 (M)", price: 35 },
+          { name: "燕麥四季春 (L)", price: 45 },
+          { name: "微檸檬紅茶 (M)", price: 35 },
+          { name: "微檸檬紅茶 (L)", price: 45 },
+          { name: "微檸檬青茶 (M)", price: 35 },
+          { name: "微檸檬青茶 (L)", price: 45 },
+          { name: "檸檬綠茶 (M)", price: 40 },
+          { name: "檸檬綠茶 (L)", price: 55 },
+          { name: "檸檬四季春 (M)", price: 40 },
+          { name: "檸檬四季春 (L)", price: 55 },
+          { name: "梅の綠 (M)", price: 40 },
+          { name: "梅の綠 (L)", price: 55 },
+          { name: "8冰綠茶 (M)", price: 40 },
+          { name: "8冰綠茶 (L)", price: 55 },
+          { name: "情人茶 (M)", price: 40 },
+          { name: "情人茶 (L)", price: 55 },
+          { name: "柚子紅茶 (M)", price: 40 },
+          { name: "柚子紅茶 (L)", price: 55 },
+          { name: "柚子綠茶 (M)", price: 40 },
+          { name: "柚子綠茶 (L)", price: 55 },
+          { name: "柚子青茶 (M)", price: 40 },
+          { name: "柚子青茶 (L)", price: 55 },
+          { name: "柚子烏龍 (M)", price: 40 },
+          { name: "柚子烏龍 (L)", price: 55 },
+          { name: "旺來紅茶 (M)", price: 40 },
+          { name: "旺來紅茶 (L)", price: 55 },
+          { name: "旺來青茶 (M)", price: 40 },
+          { name: "旺來青茶 (L)", price: 55 },
+          { name: "冰淇淋紅茶 (M)", price: 40 },
+          { name: "冰淇淋紅茶 (L)", price: 55 },
+          { name: "多多綠茶 (M)", price: 40 },
+          { name: "多多綠茶 (L)", price: 55 },
+          { name: "多多紅茶 (M)", price: 40 },
+          { name: "多多紅茶 (L)", price: 55 },
+          { name: "多多檸檬綠 (M)", price: 50 },
+          { name: "多多檸檬綠 (L)", price: 65 },
+        ],
+        "找奶茶 MILK TEA": [
+          { name: "奶茶 (M)", price: 40 },
+          { name: "奶茶 (L)", price: 55 },
+          { name: "奶綠 (M)", price: 40 },
+          { name: "奶綠 (L)", price: 55 },
+          { name: "烏龍奶 (M)", price: 40 },
+          { name: "烏龍奶 (L)", price: 55 },
+          { name: "椰果奶茶 (M)", price: 40 },
+          { name: "椰果奶茶 (L)", price: 55 },
+          { name: "珍珠奶茶 (M)", price: 40 },
+          { name: "珍珠奶茶 (L)", price: 55 },
+          { name: "波霸奶茶 (M)", price: 40 },
+          { name: "波霸奶茶 (L)", price: 55 },
+          { name: "燕麥奶茶 (M)", price: 40 },
+          { name: "燕麥奶茶 (L)", price: 55 },
+          { name: "燕麥奶青 (M)", price: 40 },
+          { name: "燕麥奶青 (L)", price: 55 },
+          { name: "燕麥烏龍奶 (M)", price: 40 },
+          { name: "燕麥烏龍奶 (L)", price: 55 },
+          { name: "布丁奶茶 (M)", price: 50 },
+          { name: "布丁奶茶 (L)", price: 65 },
+          { name: "冰淇淋奶茶 (M)", price: 50 },
+          { name: "冰淇淋奶茶 (L)", price: 65 },
+          { name: "紅茶瑪奇朵 (M)", price: 40 },
+          { name: "紅茶瑪奇朵 (L)", price: 55 },
+          { name: "青茶瑪奇朵 (M)", price: 40 },
+          { name: "青茶瑪奇朵 (L)", price: 55 },
+          { name: "阿華田 (M)", price: 45 },
+          { name: "阿華田 (L)", price: 60 },
+          { name: "燕麥阿華田 (M)", price: 45 },
+          { name: "燕麥阿華田 (L)", price: 60 },
+          { name: "可可芭蕾 (M)", price: 50 },
+          { name: "可可芭蕾 (L)", price: 65 },
+        ],
+        "找拿鐵 TEA LATTE": [
+          { name: "紅茶拿鐵 (M)", price: 50 },
+          { name: "紅茶拿鐵 (L)", price: 65 },
+          { name: "綠茶拿鐵 (M)", price: 50 },
+          { name: "綠茶拿鐵 (L)", price: 65 },
+          { name: "烏龍拿鐵 (M)", price: 50 },
+          { name: "烏龍拿鐵 (L)", price: 65 },
+          { name: "珍珠紅茶拿鐵 (M)", price: 50 },
+          { name: "珍珠紅茶拿鐵 (L)", price: 65 },
+          { name: "波霸紅茶拿鐵 (M)", price: 50 },
+          { name: "波霸紅茶拿鐵 (L)", price: 65 },
+          { name: "燕麥紅茶拿鐵 (M)", price: 50 },
+          { name: "燕麥紅茶拿鐵 (L)", price: 65 },
+          { name: "布丁紅茶拿鐵 (M)", price: 55 },
+          { name: "布丁紅茶拿鐵 (L)", price: 75 },
+          { name: "冰淇淋紅茶拿鐵 (M)", price: 55 },
+          { name: "冰淇淋紅茶拿鐵 (L)", price: 75 },
+          { name: "阿華田拿鐵 (M)", price: 55 },
+          { name: "阿華田拿鐵 (L)", price: 75 },
+          { name: "燕麥阿華田拿鐵 (M)", price: 55 },
+          { name: "燕麥阿華田拿鐵 (L)", price: 75 },
+          { name: "可可芭蕾拿鐵 (M)", price: 55 },
+          { name: "可可芭蕾拿鐵 (L)", price: 75 },
+        ],
+        "找新鮮 FRESH JUICE": [
+          { name: "柚子茶 (M)", price: 40 },
+          { name: "柚子茶 (L)", price: 55 },
+          { name: "8冰茶 (M)", price: 40 },
+          { name: "8冰茶 (L)", price: 55 },
+          { name: "檸檬汁 (M)", price: 50 },
+          { name: "檸檬汁 (L)", price: 65 },
+          { name: "金桔檸檬 (M)", price: 50 },
+          { name: "金桔檸檬 (L)", price: 65 },
+          { name: "檸檬梅汁 (M)", price: 50 },
+          { name: "檸檬梅汁 (L)", price: 65 },
+          { name: "檸檬多多 (M)", price: 55 },
+          { name: "檸檬多多 (L)", price: 75 },
+        ],
+        "❄️ 季節限定 SEASONAL SPECIAL": [
+          { name: "蜂蜜紅茶 (M)", price: 40 },
+          { name: "蜂蜜紅茶 (L)", price: 55 },
+          { name: "蜂蜜綠茶 (M)", price: 40 },
+          { name: "蜂蜜綠茶 (L)", price: 55 },
+          { name: "蜂蜜奶茶 (M)", price: 50 },
+          { name: "蜂蜜奶茶 (L)", price: 65 },
+          { name: "鮮柚綠茶 (M)", price: 50 },
+          { name: "鮮柚綠茶 (L)", price: 65 },
+          { name: "葡萄柚汁 (M)", price: 50 },
+          { name: "葡萄柚汁 (L)", price: 65 },
+          { name: "葡萄柚蜜 (M)", price: 55 },
+          { name: "葡萄柚蜜 (L)", price: 75 },
+          { name: "葡萄柚多多 (M)", price: 55 },
+          { name: "葡萄柚多多 (L)", price: 75 },
+          { name: "檸檬蜜 (M)", price: 55 },
+          { name: "檸檬蜜 (L)", price: 75 },
+          { name: "金桔檸檬蜜 (M)", price: 55 },
+          { name: "金桔檸檬蜜 (L)", price: 75 },
+        ],
+      };
 
-        // 從選項文字中提取價格（例如：茉莉綠茶 (M) - $30）
-        const priceMatch = drinkText.match(/\$(\d+)/);
-        const price = priceMatch ? priceMatch[1] : "";
+      // 初始化飲料目錄
+      function initDrinkCatalog() {
+        const catalog = document.getElementById("drinkCatalog");
+        catalog.innerHTML = "";
 
-        // 將價格存入隱藏欄位
-        document.getElementById("price").value = price;
+        for (const [category, drinkList] of Object.entries(drinks)) {
+          const categoryDiv = document.createElement("div");
+          categoryDiv.className = "drink-category";
+
+          const titleDiv = document.createElement("div");
+          titleDiv.className = "category-title";
+          titleDiv.textContent = category;
+          categoryDiv.appendChild(titleDiv);
+
+          const listDiv = document.createElement("div");
+          listDiv.className = "drink-list";
+
+          for (const drink of drinkList) {
+            const drinkItem = document.createElement("div");
+            drinkItem.className = "drink-item";
+            drinkItem.innerHTML = `<div class="drink-name">${drink.name}</div><div class="drink-price">$${drink.price}</div>`;
+            drinkItem.dataset.name = drink.name;
+            drinkItem.dataset.price = drink.price;
+
+            drinkItem.addEventListener("click", function () {
+              selectDrink(this);
+            });
+
+            listDiv.appendChild(drinkItem);
+          }
+
+          categoryDiv.appendChild(listDiv);
+          catalog.appendChild(categoryDiv);
+        }
+      }
+
+      // 選擇飲料
+      function selectDrink(element) {
+        // 移除其他已選擇的狀態
+        document
+          .querySelectorAll(".drink-item.selected")
+          .forEach((item) => item.classList.remove("selected"));
+
+        // 標記為已選擇
+        element.classList.add("selected");
+
+        // 更新隱藏欄位的值
+        const drinkName = element.dataset.name;
+        const drinkPrice = element.dataset.price;
+
+        document.getElementById("drink").value = drinkName;
+        document.getElementById("price").value = drinkPrice;
+
+        // 更新按鈕顯示
+        document.getElementById("drinkBtn").textContent = `✅ ${drinkName}`;
+
+        // 關閉模態框
+        closeModal();
+      }
+
+      // 打開模態框
+      function openModal() {
+        document.getElementById("drinkModal").classList.add("active");
+      }
+
+      // 關閉模態框
+      function closeModal() {
+        document.getElementById("drinkModal").classList.remove("active");
+      }
+
+      // 事件監聽 - 打開飲料選單
+      document
+        .getElementById("drinkBtn")
+        .addEventListener("click", function () {
+          openModal();
+        });
+
+      // 事件監聽 - 關閉按鈕
+      document
+        .querySelector(".close-btn")
+        .addEventListener("click", function () {
+          closeModal();
+        });
+
+      // 事件監聽 - 點擊模態框外部關閉
+      document
+        .getElementById("drinkModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeModal();
+          }
+        });
+
+      // 初始化頁面
+      document.addEventListener("DOMContentLoaded", function () {
+        initDrinkCatalog();
       });
 
+      // 表單提交
       document
         .getElementById("orderForm")
         .addEventListener("submit", function (e) {
@@ -467,6 +726,11 @@
           ).value;
           const ice = document.querySelector('input[name="ice"]:checked').value;
 
+          if (!drink) {
+            alert("請選擇飲料！");
+            return;
+          }
+
           // Google表單的欄位ID (需要從您的Google表單中取得)
           // 請先開啟您的Google表單，檢視原始碼找出每個欄位的entry ID
           // 以下是範例ID，您需要替換成實際的ID
@@ -479,7 +743,7 @@
           formData.append("entry.1419920221", drink); // 飲料品項欄位ID
           formData.append("entry.519317847", sugar); // 甜度欄位ID
           formData.append("entry.896911968", ice); // 冰塊欄位ID
-          formData.append("entry.1591600544", price); // 價格欄位ID (新增)
+          formData.append("entry.1591600544", price); // 價格欄位ID
 
           // 使用iframe送出表單（避免CORS問題）
           const iframe = document.createElement("iframe");
@@ -510,6 +774,7 @@
 
           // 重置表單
           document.getElementById("orderForm").reset();
+          document.getElementById("drinkBtn").textContent = "請選擇飲料 ⬇️";
 
           // 清理
           setTimeout(() => {
